@@ -9,6 +9,7 @@ from homeassistant.const import (
     DEVICE_CLASS_ILLUMINANCE,
     DEVICE_CLASS_TEMPERATURE,
     DEVICE_CLASS_POWER,
+    DEVICE_CLASS_ENERGY,
     TEMP_CELSIUS,
     POWER_WATT,
     ENERGY_WATT_HOUR
@@ -18,6 +19,12 @@ DEVICE_CLASS_MOTION = 'motion'
 
 from homeassistant.components.binary_sensor import (
     DEVICE_CLASS_CONNECTIVITY
+)
+
+from homeassistant.components.sensor import (
+    STATE_CLASS_MEASUREMENT,
+    STATE_CLASS_TOTAL,
+    STATE_CLASS_TOTAL_INCREASING
 )
 
 DOMAIN = 'shelly'
@@ -298,62 +305,62 @@ SENSOR_TYPE_MOTION = 'motion'
 
 SENSOR_TYPES_CFG = {
     SENSOR_TYPE_DEFAULT:
-        [None, None, None, None, None],
+        [None, None, None, None, None, None],
     SENSOR_TYPE_TEMPERATURE:
-        ['Temperature', TEMP_CELSIUS, None, DEVICE_CLASS_TEMPERATURE, None],
+        ['Temperature', TEMP_CELSIUS, None, DEVICE_CLASS_TEMPERATURE, None, None],
     SENSOR_TYPE_HUMIDITY:
-        ['Humidity', '%', None, DEVICE_CLASS_HUMIDITY, None],
+        ['Humidity', '%', None, DEVICE_CLASS_HUMIDITY, None, None],
     SENSOR_TYPE_POWER:
-        ['Consumption', POWER_WATT, 'mdi:flash-outline', None, None],
+        ['Consumption', POWER_WATT, 'mdi:flash-outline', None, None, None],
     SENSOR_TYPE_RSSI:
-        ['RSSI', 'dB', 'mdi:wifi', None, None],
+        ['RSSI', 'dB', 'mdi:wifi', None, None, None],
     SENSOR_TYPE_RSSI_LEVEL:
-        ['RSSI Level', None, 'mdi:wifi', None, None],
+        ['RSSI Level', None, 'mdi:wifi', None, None, None],
     SENSOR_TYPE_UPTIME:
-        ['Uptime', 's', 'mdi:timer-outline', None, None],
+        ['Uptime', 's', 'mdi:timer-outline', None, None, None],
     SENSOR_TYPE_BATTERY:
-        ['Battery', '%', None, DEVICE_CLASS_BATTERY, None],
+        ['Battery', '%', None, DEVICE_CLASS_BATTERY, None, None],
     SENSOR_TYPE_OVER_POWER:
-        ['Over power', '', 'mdi:flash-alert', None, 'bool'],
+        ['Over power', '', 'mdi:flash-alert', None, 'bool', None],
     SENSOR_TYPE_DEVICE_TEMP:
-        ['Device temperature', TEMP_CELSIUS, "mdi:oil-temperature", None, None],
+        ['Device temperature', TEMP_CELSIUS, "mdi:oil-temperature", None, None, None],
     SENSOR_TYPE_OVER_TEMP:
-        ['Over temperature', '', 'mdi:alert', None, 'bool'],
+        ['Over temperature', '', 'mdi:alert', None, 'bool', None],
     SENSOR_TYPE_CLOUD_STATUS:
-        ['Cloud status', '', 'mdi:cloud-question', None, None],
+        ['Cloud status', '', 'mdi:cloud-question', None, None, None],
     SENSOR_TYPE_MQTT_CONNECTED:
         ['MQTT connected', '', 'mdi:transit-connection-variant',
-         DEVICE_CLASS_CONNECTIVITY, 'bool'],
+         DEVICE_CLASS_CONNECTIVITY, 'bool', None],
     SENSOR_TYPE_FLOOD:
-        ['Flood', '', 'mdi:water', None, 'bool'],
+        ['Flood', '', 'mdi:water', None, 'bool', None],
     SENSOR_TYPE_DOOR_WINDOW:
-        ['Door/Window', '', 'mdi:door', 'window', 'bool'],
+        ['Door/Window', '', 'mdi:door', 'window', 'bool', None],
     SENSOR_TYPE_ILLUMINANCE:
-        ['Illuminance', 'lux', None, DEVICE_CLASS_ILLUMINANCE, None],
+        ['Illuminance', 'lux', None, DEVICE_CLASS_ILLUMINANCE, None, None],
     SENSOR_TYPE_TOTAL_CONSUMPTION:
         ['Total consumption', ENERGY_WATT_HOUR,
-         'mdi:flash-circle', DEVICE_CLASS_POWER, None],
+         'mdi:flash-circle', DEVICE_CLASS_ENERGY, None, "total_increasing"],
     SENSOR_TYPE_TOTAL_RETURNED:
         ['Total returned', ENERGY_WATT_HOUR,
-         'mdi:flash-circle', DEVICE_CLASS_POWER, None],
+         'mdi:flash-circle', DEVICE_CLASS_ENERGY, None, "total_increasing"],
     SENSOR_TYPE_VOLTAGE:
-        ['Voltage', 'V', 'mdi:alpha-v-circle-outline', None, None],
+        ['Voltage', 'V', 'mdi:alpha-v-circle-outline', None, None, None],
     SENSOR_TYPE_POWER_FACTOR:
-        ['Power factor', None, 'mdi:flash', None, None],
+        ['Power factor', None, 'mdi:flash', None, None, None],
     SENSOR_TYPE_CURRENT:
-        ['Current', 'A', 'mdi:alpha-i-circle-outline', None, None],
+        ['Current', 'A', 'mdi:alpha-i-circle-outline', None, None, None],
     SENSOR_TYPE_CLICK_TYPE:
-        ['Click type', '', 'mdi:light-switch', None, None],
+        ['Click type', '', 'mdi:light-switch', None, None, None],
     SENSOR_TYPE_TILT:
-        ['Tilt', '', 'mdi:angle-acute', None, None],
+        ['Tilt', '', 'mdi:angle-acute', None, None, None],
     SENSOR_TYPE_VIBRATION:
-        ['Vibration', '', 'mdi:vibrate', None, 'bool'],
+        ['Vibration', '', 'mdi:vibrate', None, 'bool', None],
     SENSOR_TYPE_PPM:
-        ['Concentration', 'PPM', 'mdi:gauge', None, None],
+        ['Concentration', 'PPM', 'mdi:gauge', None, None, None],
     SENSOR_TYPE_TOTAL_WORK_TIME:
-        ['Total work time', 's', 'mdi:briefcase-clock', None, None],
+        ['Total work time', 's', 'mdi:briefcase-clock', None, None, None],
     SENSOR_TYPE_EXT_SWITCH:
-        ['External switch', '', 'mdi:electric-switch', None, 'bool'],
+        ['External switch', '', 'mdi:electric-switch', None, 'bool', None],
     SENSOR_TYPE_MOTION:
-        ['Motion', '', 'mdi:motion-sensor', DEVICE_CLASS_MOTION, 'bool'],
+        ['Motion', '', 'mdi:motion-sensor', DEVICE_CLASS_MOTION, 'bool', None],
 }

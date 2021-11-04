@@ -105,7 +105,14 @@ class ShellySensor(ShellyDevice):
     @property
     def device_class(self):
         """Return the device class."""
+        _LOGGER.error("Returning the device class")
         return self._sensor_cfg[3]
+
+    @property
+    def state_class(self):
+        """Return the state class."""
+        _LOGGER.error("Returning the state class")
+        return self._sensor_cfg[5]
 
     def update(self):
         """Fetch new state data for this sensor."""
@@ -165,7 +172,14 @@ class ShellyInfoSensor(ShellyBlock):
     @property
     def device_class(self):
         """Return the device class."""
+        _LOGGER.error("Returning the device class")
         return self._sensor_cfg[3]
+
+    @property
+    def state_class(self):
+        """Return the state class."""
+        _LOGGER.error("Returning the state class")
+        return self._sensor_cfg[5]
 
 class ShellyVersion(Entity):
     """Representation of a Shelly version sensor."""
